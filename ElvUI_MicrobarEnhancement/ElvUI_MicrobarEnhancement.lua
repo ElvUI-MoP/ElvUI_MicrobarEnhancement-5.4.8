@@ -156,6 +156,8 @@ function AB:SetupSymbolBar()
 	frame:SetScript("OnEnter", Letter_OnEnter);
 	frame:SetScript("OnLeave", Letter_OnLeave);
 
+	E.FrameLocks["ElvUI_MicroBarS"] = true;
+
 	AB:CreateSymbolButton("EMB_Character", "C", MicroButtonTooltipText(CHARACTER_INFO, "TOGGLECHARACTER0"), function()
 		if(CharacterFrame:IsShown()) then
 			HideUIPanel(CharacterFrame);
