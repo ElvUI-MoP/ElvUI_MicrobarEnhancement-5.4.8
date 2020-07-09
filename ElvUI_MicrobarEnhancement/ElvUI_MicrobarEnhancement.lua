@@ -21,7 +21,8 @@ local MICRO_BUTTONS = {
 	EJMicroButton = L["JOURNAL_SYMBOL"],
 	CompanionsMicroButton = L["PETS_SYMBOL"],
 	StoreMicroButton = L["STORE_SYMBOL"],
-	MainMenuMicroButton = L["MENU_SYMBOL"],
+	HelpMicroButton = L["HELP_SYMBOL"],
+	MainMenuMicroButton = L["MENU_SYMBOL"]
 }
 
 function AB:SetSymbloColor()
@@ -92,6 +93,8 @@ function AB:EnhancementInit()
 
 	GuildMicroButtonTabardBackground:SetDrawLayer("ARTWORK", 0)
 	GuildMicroButtonTabardEmblem:SetDrawLayer("ARTWORK", 1)
+
+	MainMenuBarDownload:SetDrawLayer("ARTWORK", 1)
 end
 
 hooksecurefunc(AB, "SetupMicroBar", AB.EnhancementInit)

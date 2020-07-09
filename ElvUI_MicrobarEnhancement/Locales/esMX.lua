@@ -10,6 +10,7 @@ L["Replace icons with letters"] = true
 L["ACHIEVEMENT_SYMBOL"] = "A"
 L["CHARACTER_SYMBOL"] = "C"
 L["GUILD_SYMBOL"] = "G"
+L["HELP_SYMBOL"] = "H"
 L["JOURNAL_SYMBOL"] = "E"
 L["LFD_SYMBOL"] = "D"
 L["MENU_SYMBOL"] = "M"
