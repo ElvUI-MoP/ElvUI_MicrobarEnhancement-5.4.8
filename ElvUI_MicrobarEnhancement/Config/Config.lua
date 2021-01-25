@@ -18,32 +18,26 @@ function AB:GetOptions()
 		get = function(info) return E.db.actionbar.microbar[info[#info]] end,
 		set = function(info, value) E.db.actionbar.microbar[info[#info]] = value AB:UpdateMicroPositionDimensions() end,
 		args = {
-			backdrop = {
+			symbolic = {
 				order = 1,
 				type = "toggle",
-				name = L["Backdrop"],
-				disabled = function() return not AB.db.microbar.enabled end
-			},
-			transparentBackdrop = {
-				order = 2,
-				type = "toggle",
-				name = L["Transparent Backdrop"],
-				disabled = function() return not AB.db.microbar.enabled or not AB.db.microbar.backdrop end
-			},
-			spacer = {
-				order = 3,
-				type = "description",
-				name = " "
-			},
-			symbolic = {
-				order = 4,
-				type = "toggle",
-				name = L["As Letters"],
+				name = L["ENABLE"],
 				desc = L["Replace icons with letters"],
 				disabled = function() return not AB.db.microbar.enabled end
 			},
+			spacer = {
+				order = 2,
+				type = "description",
+				name = ""
+			},
+			transparentButtons = {
+				order = 3,
+				type = "toggle",
+				name = L["Transparent Buttons"],
+				disabled = function() return not AB.db.microbar.enabled or not AB.db.microbar.symbolic end
+			},
 			classColor = {
-				order = 5,
+				order = 4,
 				type = "toggle",
 				name = L["Use Class Color"],
 				get = function(info) return AB.db.microbar.classColor end,
@@ -51,7 +45,7 @@ function AB:GetOptions()
 				disabled = function() return not AB.db.microbar.enabled or not AB.db.microbar.symbolic end,
 			},
 			color = {
-				order = 6,
+				order = 5,
 				type = "color",
 				name = L["COLOR"],
 				get = function(info)

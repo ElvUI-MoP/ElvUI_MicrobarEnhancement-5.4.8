@@ -51,36 +51,19 @@ local oldUpdateMicroPositionDimensions = AB.UpdateMicroPositionDimensions
 function AB:UpdateMicroPositionDimensions()
 	oldUpdateMicroPositionDimensions(self)
 
-	if not ElvUI_MicroBar.backdrop then
-		ElvUI_MicroBar:CreateBackdrop()
-	end
-
-	ElvUI_MicroBar.backdrop:SetTemplate(AB.db.microbar.transparentBackdrop and "Transparent" or "Default")
-	ElvUI_MicroBar.backdrop:SetOutside(ElvUI_MicroBar, AB.db.microbar.backdropSpacing, AB.db.microbar.backdropSpacing)
-
-	if AB.db.microbar.backdrop then
-		ElvUI_MicroBar.backdrop:Show()
-	else
-		ElvUI_MicroBar.backdrop:Hide()
-	end
+	local symbol = AB.db.microbar.symbolic
 
 	for button in pairs(MICRO_BUTTONS) do
 		local b = _G[button]
 
-		if AB.db.microbar.symbolic then
-			b:DisableDrawLayer("ARTWORK")
-			b:EnableDrawLayer("OVERLAY")
+		b.backdrop:SetTemplate(symbol and AB.db.microbar.transparentButtons and "Transparent" or "Default", true)
 
-			GuildMicroButtonTabard.emblem:Hide()
-			GuildMicroButtonTabard.background:Hide()
-		else
-			b:EnableDrawLayer("ARTWORK")
-			b:DisableDrawLayer("OVERLAY")
-
-			GuildMicroButtonTabard.emblem:Show()
-			GuildMicroButtonTabard.background:Show()
-		end
+		b:DisableDrawLayer(symbol and "ARTWORK" or "OVERLAY")
+		b:EnableDrawLayer(symbol and "OVERLAY" or "ARTWORK")
 	end
+
+	GuildMicroButtonTabard.emblem:SetShown(not symbol)
+	GuildMicroButtonTabard.background:SetShown(not symbol)
 
 	AB:SetSymbloColor()
 end
@@ -90,10 +73,6 @@ function AB:EnhancementInit()
 
 	MicroButtonPortrait:SetDrawLayer("ARTWORK", 1)
 	PVPMicroButtonTexture:SetDrawLayer("ARTWORK", 1)
-
-	GuildMicroButtonTabardBackground:SetDrawLayer("ARTWORK", 0)
-	GuildMicroButtonTabardEmblem:SetDrawLayer("ARTWORK", 1)
-
 	MainMenuBarDownload:SetDrawLayer("ARTWORK", 1)
 end
 
